@@ -3,9 +3,9 @@ import App from '../components/App';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slickcorousel from '../components/home/Slickcorousel';
-import HomeTopStoriesVideos from '../components/home/HomeTopStoriesVideos';
 import SupportedBy from '../components/home/SupportedBy';
 import Fade from 'react-reveal/Fade';
+import HomeTopStoriesVideos from '../components/home/HomeTopStoriesVideos';
 
 const IndexPage = props => (
   <App title='Home Page'>
@@ -49,3 +49,15 @@ const IndexPage = props => (
 )
 
 export default withApollo(IndexPage)
+
+function TitleSection(props){
+  return(
+    <div className="row">
+      <div className="col-md-12 text-center">
+          <Fade bottom>
+              <h1 className="section-title">{props.title}</h1>
+          </Fade>
+      </div>
+    </div>
+  )
+}
