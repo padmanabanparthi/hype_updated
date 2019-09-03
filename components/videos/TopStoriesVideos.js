@@ -3,16 +3,16 @@ import gql from 'graphql-tag'
 import DisplayStories from '../common/DisplayStories'
 
 
-export default function TopStoriesVideos (props) {
+export default function TopStoriesVideo (props) {
   const { loading, error, data } = useQuery(
-    props.ALL_POSTS_QUERY,
+    props.FIND_STORIES_QUERY,
     {
-      variables: props.allPostsQueryVars,
+      variables: props.findStoriesQueryVars,
     }
   )
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return <p className="text-center">Loading...</p>;
+  if (error) return <p className="text-center">Error :(</p>;
   
   const { findStories} = data
   const stories = findStories.stories
@@ -20,12 +20,19 @@ export default function TopStoriesVideos (props) {
   const tpage = findStories.totalPages
   const totposts = findStories.stories.length
 
+  if(totposts){
+    var totmsg = <div className="float-right">{totposts} Items | Most Popular</div>
+  }
+  else{
+    var totmsg =""
+  }
+
   return(
     <fragment>
       <div className="row">
         <div className="col-md-12">
         {/* Total Posts: {totposts} , Current Page: {cpage} , Total Pages: {tpage} */}
-        <div className="float-right">{totposts} Items | Most Popular</div>
+        {totmsg}
         </div>
       </div>
       <div className="clearfix"></div>
