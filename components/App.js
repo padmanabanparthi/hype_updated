@@ -162,7 +162,9 @@ export default ({ children, title }) => (
           color:#4C3F92;
         }
 
-
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+          width: 84.9%;
+        }
         .navbar-button-links .signin{
           color:#E5397D;
         }

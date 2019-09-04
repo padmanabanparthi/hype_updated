@@ -1,32 +1,33 @@
 import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import Link from 'next/link'
-
+import Fade from 'react-reveal/Fade';
 
 export default function TopicsLeftMenu (props) {
   const { loading, error, data } = useQuery(
     props.FIND_TOPICS_QUERY
   )
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>...</p>;
   if (error) return <p>Error :(</p>;
   
   const { findTopics} = data
   const res = findTopics.topics
 
   return(
-    <fragment>
+    <div>
       <div className="topstories-logo text-center">
       <Link href="/"><a className="navbar-brand"><img src="/static/logo.png" alt="Hype" /></a></Link>
       </div>
       <div className="topstories-menus">
         <ul>
           {res.map(({ id,name,imageUrl },index) => (
-            <li id={id} key={id}>
-              <Link href={{ pathname: '/videos', query: { id: id,topic: name } }}>
-                <a><img src={imageUrl} /> <span className="leftmenu-span">{name}</span></a>
-              </Link>
-            </li>
+            <Fade>
+              <li id={id} key={id}>
+                <Link href={{ pathname: '/videos', query: { id: id,topic: name } }}>
+                  <a><img src={imageUrl} /> <span className="leftmenu-span">{name}</span></a>
+                </Link>
+              </li>
+            </Fade>
           ))}
         </ul>
       </div>
@@ -66,6 +67,6 @@ export default function TopicsLeftMenu (props) {
           float:right;
         }
       `}</style>
-    </fragment>
+    </div>
   )
 }

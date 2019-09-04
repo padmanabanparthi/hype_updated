@@ -1,5 +1,5 @@
 import Link from 'next/link'
-// import FooterCategories from './FooterCategories'
+import FooterCategories from './FooterCategories'
 function Footer(){
     return(
         <div>
@@ -19,7 +19,7 @@ function Footer(){
                         </div>
                         <div className="footercol">
                             <h5>Categories</h5>
-                            {/* <FooterCategories /> */}
+                            <FooterCategories />
                             <div className="text-right">
                             <Link href="/"><a className="flinks">..View all</a></Link>
                             </div>
@@ -95,7 +95,7 @@ function Footer(){
                 }
                 footer form input::placeholder,footer form textarea::placeholder{
                     color:#8C8C8C;
-                    font-weight:semibold;
+                    font-weight:300;
                     font-size:14px;
                 }
                 .payment-icons span {
@@ -111,10 +111,10 @@ function Footer(){
                     vertical-align:top;
                 }
                 .footerform{
-                    width:30%;
+                    width: 28.8%;
                 }
                 .footerform .email, .footerform .company{
-                    width:47%;
+                    width: 48%;
                 }
                 .footerform .email{
                     margin-right: 10px;

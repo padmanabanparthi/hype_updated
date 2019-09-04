@@ -60,7 +60,8 @@ function StoriesPage(props) {
         }
         .left-menu-container{
           background: #fff;
-          box-shadow:0px 4px 10px #dbd9d9;
+          box-shadow:0px 0px 10px #d8d6d69c;
+          z-index: 1;
           padding-top:4px;
         }
         .stories-container{

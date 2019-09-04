@@ -1,9 +1,32 @@
 import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import DisplayStories from '../common/DisplayStories'
 import LoadingMessage from '../common/LoadingMessage'
 import ErrorMessage from '../common/ErrorMessage'
+import Fade from 'react-reveal/Fade';
+import React from 'react';
 
+function StoriesInfo(props){
+  return(
+    <React.Fragment>
+      <div className="total-sortby-section">
+        <div className="float-right">
+          <Fade><span>{props.totposts} Items</span></Fade> | <Fade><span>Sort by: {props.sortby}</span></Fade>
+        </div>
+      </div>
+      <style jsx>{`
+      .videos-result{
+        margin-top:50px;
+      }
+      .col-right{
+          float:right;
+      }
+      .total-sortby-section{
+        margin-bottom:40px;
+      }
+      `}</style>
+    </React.Fragment>
+  )
+}
 
 export default function TopStoriesVideo (props) {
   const { loading, error, data } = useQuery(
@@ -23,18 +46,18 @@ export default function TopStoriesVideo (props) {
   const totposts = findStories.stories.length
 
   if(totposts){
-    var totmsg = <div className="float-right">{totposts} Items | Most Popular</div>
+    var totmsg = <StoriesInfo totposts={totposts} sortby="Most Popular"/>
   }
   else{
     var totmsg =""
   }
 
   return(
-    <fragment>
+    <React.Fragment>
       <div className="row videos-result">
         <div className="col-md-12">
         {/* Total Posts: {totposts} , Current Page: {cpage} , Total Pages: {tpage} */}
-        {totmsg}
+          {totmsg}
         </div>
       </div>
       <div className="clearfix"></div>
@@ -46,7 +69,8 @@ export default function TopStoriesVideo (props) {
         .col-right{
             float:right;
         }
-        `}</style>
-    </fragment>
+      `}</style>
+    </React.Fragment>
   )
 }
+
