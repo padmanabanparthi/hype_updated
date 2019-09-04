@@ -38,7 +38,7 @@ function Footer(){
                                     <input type="text" name="name" placeholder="Full Name" className="fname" />
                                     <input type="email" name="email" placeholder="Email" className="email" />
                                     <input type="text" name="company" placeholder="Company" className="company"/>
-                                    <textarea placeholder="Message"></textarea>
+                                    <textarea placeholder=""></textarea>
                                     <button className="submitinfo">Submit</button>
                                 </form>
                             </div>

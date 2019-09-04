@@ -22,7 +22,9 @@ export default ({ children, title }) => (
           color:rgba(0,0,0,.84)!important;
           font-family: 'Poppins', sans-serif;
         }
-
+        .loadingsection,.errorsection{
+          margin-top:50px;
+        }
         .slick-slide.slick-active:nth-child(1) {
           left: -100px;
         }

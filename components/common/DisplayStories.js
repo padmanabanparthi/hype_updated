@@ -55,7 +55,13 @@ export default class DisplayStories extends Component {
     }
     else{
       return (
-        <fragment><p className="text-center">no items found</p></fragment>
+        <fragment>
+          <div className="row">
+              <div className="col-md-12">
+                <p className="text-center">no items found</p>
+              </div>
+          </div>  
+        </fragment>
       )
     }
     

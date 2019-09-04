@@ -1,6 +1,8 @@
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import DisplayStories from '../common/DisplayStories'
+import LoadingMessage from '../common/LoadingMessage'
+import ErrorMessage from '../common/ErrorMessage'
 
 
 export default function TopStoriesVideo (props) {
@@ -11,8 +13,8 @@ export default function TopStoriesVideo (props) {
     }
   )
 
-  if (loading) return <p className="text-center">Loading...</p>;
-  if (error) return <p className="text-center">Error :(</p>;
+  if (loading) return <LoadingMessage message="loading..."/>;
+  if (error) return <ErrorMessage message="Error :("/>;
   
   const { findStories} = data
   const stories = findStories.stories
@@ -29,7 +31,7 @@ export default function TopStoriesVideo (props) {
 
   return(
     <fragment>
-      <div className="row">
+      <div className="row videos-result">
         <div className="col-md-12">
         {/* Total Posts: {totposts} , Current Page: {cpage} , Total Pages: {tpage} */}
         {totmsg}
@@ -38,6 +40,9 @@ export default function TopStoriesVideo (props) {
       <div className="clearfix"></div>
       <DisplayStories findstories={stories}/>
       <style jsx>{`
+        .videos-result{
+          margin-top:50px;
+        }
         .col-right{
             float:right;
         }

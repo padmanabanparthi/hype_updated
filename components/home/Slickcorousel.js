@@ -9,6 +9,9 @@ import { useQuery } from '@apollo/react-hooks'
 import { NetworkStatus } from 'apollo-boost'
 import gql from 'graphql-tag'
 
+import LoadingMessage from '../common/LoadingMessage'
+import ErrorMessage from '../common/ErrorMessage'
+
 export const GET_TOPSTORIES  = gql`
 {
     findHomes(topicsPage: 1 , productsPage: 1, storiesPage: 1, storesPage: 2, industrySectorsPage: 1,retailersPage:1) {
@@ -26,8 +29,8 @@ export const GET_TOPSTORIES  = gql`
 
 export default function SimpleSlider(){
   const { loading, error, data } = useQuery(GET_TOPSTORIES);
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  if (loading) return <LoadingMessage message="loading..."/>;
+  if (error) return <ErrorMessage message={"Error :( : "+error.message}/>;
   return(
     <VidSlider repositories={data.findHomes.topStories} />
   )

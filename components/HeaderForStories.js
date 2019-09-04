@@ -2,12 +2,10 @@ import Link from 'next/link'
 import { withRouter } from 'next/router'
 
 
-const Header = ({ router: { pathname } }) => (
+const HeaderForStories = ({ router: { pathname } }) => (
   <header>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-      <Link href="/"><a className="navbar-brand"><img src="/static/logo.png" alt="my image" /></a></Link>
-      
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -56,11 +54,18 @@ const Header = ({ router: { pathname } }) => (
 
     </nav>
     <style jsx>{`
-      .active {
+      #navbarNav {
+        margin: 16px 18px 16px 0px;
+      }
+      .navbar.navbar-expand-lg.navbar-light.bg-light {
+        width: 100%;
+        margin: 0 auto;
+      }
+     .active {
         color: #E5397D !important;
       }
     `}</style>
   </header>
 )
 
-export default withRouter(Header)
+export default withRouter(HeaderForStories)

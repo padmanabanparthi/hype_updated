@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import { useRouter } from 'next/router';
 
 import App from '../components/App';
-import Header from '../components/Header';
+import HeaderForStories from '../components/HeaderForStories';
 import Footer from '../components/Footer';
 
 import TopStoriesVideos from '../components/videos/TopStoriesVideos';
@@ -37,29 +37,40 @@ function StoriesPage(props) {
   
   return (
     <App title='Stories'>
-      <Header />
-      <section className="stories-section">
-        <div className="container section">
-          <div className="row">
-            <div className="col-md-2 left-menu-container">
+      <div className="">
+          <div className="video-page-container">
+            <div className="left-menu-container">
             <TopicsLeftMenu FIND_TOPICS_QUERY={FIND_TOPICS_QUERY}/>
             </div>
-            <div className="col-md-10 stories-result">
-              <TitleSection title={topicname} desc="Watch and shop what you like instantly"/>
-              <TopStoriesVideos FIND_STORIES_QUERY={FIND_STORIES_QUERY} findStoriesQueryVars={findStoriesQueryVars}/>
+            <div className="stories-container">
+              <HeaderForStories />
+              <div className="stories-result">
+                <TitleSection title={topicname} desc="Watch and shop what you like instantly"/>
+                <div>
+                    <TopStoriesVideos FIND_STORIES_QUERY={FIND_STORIES_QUERY} findStoriesQueryVars={findStoriesQueryVars}/>
+                </div>
+              </div>
+              <Footer/>
             </div>
           </div>
-        </div>
-      </section>
-      <Footer/>
+      </div>
       <style jsx>{`
+        .video-page-container{
+          display:flex;
+        }
         .left-menu-container{
           background: #fff;
-          padding-top:30px;
+          box-shadow:0px 4px 10px #dbd9d9;
+          padding-top:4px;
+        }
+        .stories-container{
+          background: #F4F6F8;
+          width: 86%;
         }
         .stories-result{
-            background: #f1f1f1;
-            padding-top:30px;
+            background: #F4F6F8;
+            padding:60px 40px 0px 40px;
+            min-height:300px;
         }
       `}</style>
     </App>
